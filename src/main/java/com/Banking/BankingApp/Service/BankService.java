@@ -96,7 +96,7 @@ public class BankService {
         for (Customers cust : custData) {
 
 
-            if (transactionReq.getAccNO().equals(cust.getAccNO())) {
+            if (transactionReq.getAccNO().equals(cust.getAccNO()) && transactionReq.getCustName().equals(cust.getCustName())) {
                 try {
                     int amt = Integer.parseInt(transactionReq.getDebitAmt());
                     int avlBalance = Integer.parseInt(cust.getAvlBal());
@@ -122,12 +122,11 @@ public class BankService {
                 }
                 i++;
             }
+        }
+        if (i == 0) {
+            log.error("No customer found with this account number or Name");
 
         }
-        if (i == 0){
-            log.info("No customer found with this account number");
-        }
-
         return fetchBalInfo;
     }
 }

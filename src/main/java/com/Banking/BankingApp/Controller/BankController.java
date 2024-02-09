@@ -53,8 +53,4 @@ public class BankController {
         return new ResponseEntity<>(bankService.debitTransaction(transactionReq),HttpStatus.OK);
     }
 
-
-
-
-
 }
